@@ -22,7 +22,19 @@ module.exports = {
       },
       colors: {
         customYellow: '#f79f2a',
+        serenity: '#bbc8de',
+        navyBlue: '#192E41',
+        black: '#010307',
+        serenity: '#bbc8de',
+        darkBlue: '#071330',
       },
+      backgroundColor: theme => ({
+        ...theme('colors'),
+        'navyBlue': '#192E41',
+        'black': '#010307',
+        'serenity': '#bbc8de',
+        'darkBlue': '#071330',
+       })
     },
   },
   daisyui: {
