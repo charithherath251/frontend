@@ -1,22 +1,25 @@
 
 import './App.css';
-import { Route, Router, Routes } from 'react-router-dom';
-import Sidebar from './components/SideBar';
-import Home from './pages/Home';
-import PolicyPage from './components/PoliciesPage';
-import Login from './pages/Login';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+
+import AdminDashboard from './pages/AdminDashboard';
+import { UserContext } from './context/UserContext';
 
 
 function App() {
+
+  const [userContext, setUserContext] = useState(JSON.parse(sessionStorage.getItem('user')) || { _id: "1", role: "user" });
+
   return (
     <>
-      
-        <Routes>
-          <Route exact path="/" element={<Sidebar/>} />
-          <Route path='/home' element={<Home/>} /> 
-          <Route path='/policies' element={<PolicyPage/>} />
-          <Route path='/login' element={<Login/>} />
-        </Routes>
+      <UserContext.Provider value={{ userContext, setUserContext }}>
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/dashboard" element={<AdminDashboard />} />
+          </Routes>
+        </BrowserRouter>
+      </UserContext.Provider>
     </>
   );
 }

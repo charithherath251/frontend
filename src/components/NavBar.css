@@ -1,0 +1,118 @@
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  background-color: var(--navbar-color);
+  color: var(--text-color-2);
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  overflow: hidden;
+  transition: width 0.4s;
+  box-shadow: var(--shadow-4-4);
+}
+
+.nav__wrapper {
+  height: calc(100% - 300px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 150px;
+  margin-bottom: 150px;
+  direction: rtl;
+}
+
+.nav__wrapper * {
+  direction: ltr;
+}
+
+.nav ul.nav-links {
+  list-style: none;
+  padding: 0;
+  height: fit-content;
+  margin: 0;
+}
+
+.nav .nav__wrapper::-webkit-scrollbar {
+  width: 5px;
+  background-color: var(--scrollbar-track-color);
+}
+
+.nav .nav__wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border: 0px;
+  border-radius: 5px;
+}
+
+.nav .nav-links .nav-link {
+  display: flex;
+  user-select: none;
+  flex-direction: row;
+  text-decoration: none;
+  color: var(--text-color-2);
+  border-left: 0px solid var(--text-color-4);
+  margin: 0;
+  min-height: 50px;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  transition: border 0.2s;
+}
+
+.nav .nav-links .nav-link .link{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav .nav-links .nav-link .nav-link__icon {
+  min-width: 40px;
+  transition-property: width;
+  transition-duration: 0.4s;
+}
+
+.nav .nav-links .nav-link .nav-link__text {
+  display: none;
+  width: 0;
+  color: var(--text-color-2);
+  text-align: left;
+  transition: display 0.4s, width 0.4s, color 0s;
+  transition-behavior: allow-discrete;
+}
+
+.nav:hover {
+  width: 250px;
+}
+
+.nav:hover .nav-links .nav-link {
+  width: 100% - 40px;
+}
+
+.nav:hover .nav-links .nav-link .nav-link__text {
+  display: flex;
+  width: 100%;
+
+  @starting-style {
+    width: 0;
+    color: var(--text-color-2);
+  }
+}
+
+.nav .nav-links .nav-link:hover {
+  border-left: 5px solid var(--accent-color-2);
+  background-color: var(--accent-color-1);
+  color: var(--text-color-4);
+}
+
+.nav .nav-links .nav-link:hover .nav-link__text {
+  color: var(--text-color-6);
+  transition: none;
+}
+
+.nav .nav-links .nav-link:hover .nav-link__icon {
+  color: var(--text-color-6);
+  transition: none;
+}
