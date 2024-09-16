@@ -1,0 +1,104 @@
+
+.right-iconned-input {
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    height: 40px;
+    width: 100%;
+    padding: 0px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #fff;
+    color: var(--accent-color-1);
+}
+
+.right-iconned-input__label{
+    color: var(--text-color-1);
+    width:100%;
+    margin-bottom: 5px;
+    margin-top: 8px;
+    letter-spacing: 0.25px;
+    font-weight: 500;
+}
+
+.right-iconned-input input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border:  1px solid var(--accent-color-1);
+    border-radius: inherit;
+    padding-left: 12px;
+    background-color: inherit;
+    outline: none;
+    font-family: 'Roboto', arial, sans-serif;
+    font-size: 14px;    
+    transition: 0.5s;
+}
+
+.right-iconned-input input::placeholder{
+    font-family: 'Roboto Regular', arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.right-iconned-input > span {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    height: calc(100% - 4px);
+    aspect-ratio: 1;
+    border-radius: inherit;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    font-family: 'Material Icons';
+    background-color: inherit;
+    color: inherit;
+    transition: 0.5s;
+}
+
+.right-iconned-input input:hover{
+    border: 2px solid #555;
+}
+
+.right-iconned-input input:hover + span{
+    color : #555;
+}
+
+.right-iconned-input input:focus{
+    border: 2px solid black;
+}
+
+.right-iconned-input input:focus + span{
+    color : black;
+}
+
+.right-iconned-input input:focus::placeholder{
+    color: #555;
+}
+
+.right-iconned-input.content-false__input input{
+    border: 2px solid var(--red-light-2);
+}
+
+.right-iconned-input.content-true__input input{
+    border: 2px solid var(--green-light-2);
+}
+
+.right-iconned-input__label .right-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  
+  .right-iconned-input__label .right-label.error {
+    color: var(--red-light-2);
+  }
+  

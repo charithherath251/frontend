@@ -1,0 +1,54 @@
+.login-form .right-iconned-input{
+    margin-bottom: 30px;
+    width: 100%
+}
+
+.login-btn{
+    margin-top: 0px !important;
+    margin-bottom: 20px !important;
+}
+
+.password__label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%
+}
+
+.form-bottom-bar{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 400px;
+    padding: 0 20px;
+    height: 40px;
+    margin-top: 20px;
+    letter-spacing: 0.25px;
+    color: var(--accent-color-1);
+    user-select: none;
+    transition: 0.3s;
+}
+
+.register-link{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.register-link .register__icon{
+    font-family: "Material Icons";
+    height: 100%;
+    margin-left: 3px;
+}
+
+.forgot-password{
+    cursor: pointer;
+}
+
+.form-bottom-bar > *:hover{
+    color: black;
+}

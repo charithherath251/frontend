@@ -9,19 +9,31 @@ function userProfileNav(userContext) {
       icon: "person",
       active: true,
     },
-    {
-      path: [`/workout`],
-      title: "Manage Workouts",
-      icon: "exercise",
-    },
   ];
 
   if (userContext.role === "admin") {
-    nav.push({
-      path: [`/admin/users`, `/admin`],
-      title: "Admin Dashboard",
-      icon: "admin_panel_settings",
-    });
+    nav.push(
+      {
+        path: [`/admin`, `/admin/dashboard`],
+        title: "Admin Dashboard",
+        icon: "admin_panel_settings",
+      },
+      {
+        path: [`/admin/logins`],
+        title: "User Logins",
+        icon: "passkey",
+      },
+      {
+        path: [`/admin/policies`],
+        title: "Policies",
+        icon: "local_police",
+      },
+      {
+        path: [`/admin/quizes`],
+        title: "Quizes",
+        icon: "quiz",
+      },
+    );
   }
 
   return nav;

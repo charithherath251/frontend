@@ -1,0 +1,187 @@
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: 0px;
+  width: 195px;
+  height: 40px;
+  padding: 0px;
+  margin: 0px;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  box-shadow: var(--shadow-4-4);
+  cursor: pointer;
+  -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
+  transition: background-color .218s, border-color .218s, box-shadow .218s;
+}
+
+.icon-btn:hover {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+
+.icon-btn .btn__icon {
+  font-family: "Material Icons";
+  font-size: 18px;
+  width: 18px;
+}
+
+.icon-btn .btn__text {
+  font-family: "Roboto", arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+}
+
+.icon-btn .btn__icon-rmargin {
+  margin-right: 3px;
+}
+
+.icon-btn .btn__icon-lmargin {
+  margin-left: 3px;
+}
+
+/* Heights*/
+
+.btn-height-50 {
+  height: 50px !important;
+}
+
+.btn-height-100 {
+  height: 100px !important;
+}
+
+.btn-height-max {
+  height: 100% !important;
+}
+
+/*Widths*/
+
+.btn-width-40{
+  width: 40px !important;
+}
+
+.btn-width-50 {
+  width: 50px !important;
+}
+
+.btn-width-100 {
+  width: 100px !important;
+}
+
+.btn-width-max {
+  width: 100% !important;
+}
+/*Background Colors*/
+
+.btn-bg-red {
+  background-color: var(--red-light-1) !important;
+}
+
+.btn-bg-red:hover {
+  background-color: var(--red-light-2) !important;
+}
+
+.btn-bg-green {
+  background-color: var(--green-light-1) !important;
+}
+
+.btn-bg-green:hover {
+  background-color: var(--green-light-2) !important;
+}
+
+.btn-bg-blue {
+  background-color: var(--blue-light-1) !important;
+}
+
+.btn-bg-blue:hover {
+  background-color: var(--blue-light-2) !important;
+}
+
+.btn-bg-yellow {
+  background-color: var(--yellow-light-1) !important;
+}
+
+.btn-bg-yellow:hover {
+  background-color: var(--yellow-light-2) !important;
+}
+
+/*Text sizes*/
+
+.btn__text-12 {
+  font-size: 12px !important;
+}
+
+.btn__text-14 {
+  font-size: 14px !important;
+}
+
+.btn__text-16 {
+  font-size: 16px !important;
+}
+
+.btn__text-18 {
+  font-size: 18px !important;
+}
+
+.btn__text-24 {
+  font-size: 24px !important;
+}
+
+.btn__text-36 {
+  font-size: 36px !important;
+}
+
+.btn__text-48 {
+  font-size: 48px !important;
+}
+
+/*Icon sizes*/
+
+.btn__icon-18 {
+  font-size: 18px !important;
+  width: 18px;
+}
+
+.btn__icon-24 {
+  font-size: 24px !important;
+  width: 24px;
+}
+
+.btn__icon-36 {
+  font-size: 36px !important;
+  width: 36px;
+}
+
+.btn__icon-48 {
+  font-size: 48px !important;
+  width: 48px;
+}
+
+/* border width */
+
+.btn-borderw-1 {
+  border: 1px solid !important;
+}
+
+/* border color */
+
+.btn-borderc-red {
+  border-color: var(--red-light-1) !important;
+}
+
+.btn-borderc-red:hover {
+  border-color: var(--red-light-2) !important;
+}
+
+.btn-borderc-747775 {
+  border-color: #747775 !important;
+}
+
+/* Text Color */
+
+.btn-clr-white{
+  color: white;
+}
