@@ -27,6 +27,7 @@ function App() {
               <Route path="quizes" element={<AdminDashboard />} />
             </Route>
             <Route path="/auth">
+              <Route index element={<AuthPage formType={<LoginForm/>}/>} />
               <Route path="login" element={<AuthPage formType={<LoginForm/>}/>} />
               <Route path="register" element={<AuthPage formType={<RegisterForm/>}/>} />
             </Route>
