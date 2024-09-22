@@ -12,12 +12,8 @@ body {
   min-height: 100%;
   height: 1px;
   overflow: hidden;
-}
-
-body {
-  margin: 0;
   font-family: 'Roboto', arial, sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -30,14 +26,22 @@ a{
 
 .h-divider{
   width: 100%;
-  height: 1px;
-  background-color: var(--accent-color-1);
+  height: 2px;
+  background: linear-gradient(90deg, rgb(from var(--accent-color-1) r g b / 0) 2%, var(--accent-color-2)50%, rgb(from var(--accent-color-1) r g b / 0) 98%);
   margin: 10px 0px;
+}
+
+.h-divider.low-profile{
+  background-color: var(--accent-color-1);
+  height: 1px;
+  margin: 5px 0px;
 }
 
 #root {
   min-height: 100%;
   height: inherit;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 .google-auth-btn{
@@ -110,11 +114,27 @@ a{
   box-shadow: var(--shadow-2-2);
 }
 
+.container .title{
+  font-size: 1.25rem;
+  font-weight: bold;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+
 .horizontal-container{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  width: 100%;
+}
+
+.horizontal-container.fx-space-between{
+  justify-content: space-between;
 }
 
 .content-column {
@@ -281,4 +301,33 @@ a{
 
 .indicator.inactive{
   background-color: var(--red-light-1);
+}
+
+.table{
+  background-color: var(--accent-color-2);
+  border-radius: 4px;
+  box-shadow: var(--shadow-2-2);
+}
+
+.table thead{
+  color: var(--text-color-6)
+}
+
+.table tbody{
+  background-color: var(--secondary-color);
+}
+
+.table .td-horizontal{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
 }

@@ -16,6 +16,7 @@
   user-select: none;
   transition: width 0.4s;
   box-shadow: var(--shadow-4-4);
+  z-index: 1000;
 }
 
 .nav__header {
