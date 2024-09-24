@@ -1,16 +1,15 @@
 // Policy.js
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
-
+import axios from "../utils/axios";
 
 import IconButton from "../components/IconButton";
+import RightIconRectInput from "../components/RightIconRectInput";
 import TextEditor from "../components/TextEditor";
 
 import "./Policy.css";
-import axios from "../utils/axios";
-import RightIconRectInput from "../components/RightIconRectInput";
-import { toast } from "react-toastify";
 
 function Policy() {
 

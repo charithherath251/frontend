@@ -34,13 +34,13 @@ TextEditor.modules = {
         [{ 'header': [1, 2, 3, false] }], // Header options
         ['bold', 'italic', 'underline'],
         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-        ['clean'], // Remove formatting button
+        ['link', 'clean'], // Remove formatting button
     ],
 };
 
 TextEditor.formats = [
     'header', 'bold', 'italic', 'underline',
-    'list', 'bullet',
+    'list', 'bullet', 'link',
 ];
 
 export default TextEditor;
