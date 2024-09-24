@@ -143,6 +143,10 @@ a{
   gap: 20px;
 }
 
+.horizontal-container.align-flex-start{
+  align-items: flex-start;
+}
+
 .horizontal-container .full-width{
   width: 100%;
 }

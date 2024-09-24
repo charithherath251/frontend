@@ -25,7 +25,16 @@ function Policy() {
     }
     const [editMode, setEditMode] = useState(isEditMode);
 
-    const [policy, setPolicy] = useState({ "policyName": "", "department": "", "level": "novice", "policyDescription": "", "policyContent": "", "policyLink": "null", "policyCreatedDate": Date.now() });
+    const getDate = () => {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+        const dd = String(today.getDate()).padStart(2, '0');
+
+        return `${yyyy}-${mm}-${dd}`;
+    }
+
+    const [policy, setPolicy] = useState({ "policyName": "", "department": "", "level": "novice", "policyDescription": "", "policyContent": "", "policyLink": "null", "policyCreatedDate": getDate() });
 
     const [policyName, setPolicyName] = useState(policy.policyName);
     const [department, setDepartment] = useState(policy.department);
@@ -71,7 +80,7 @@ function Policy() {
     const handleSaveButtonClick = () => {
         // Save the policy to the database
 
-        if(!policyName || !department || !level || !policyDescription || !policyContent || !policyLink || !policyCreatedDate) {
+        if (!policyName || !department || !level || !policyDescription || !policyContent || !policyLink || !policyCreatedDate) {
             toast.error("Please fill all the fields");
             return;
         }
@@ -108,7 +117,7 @@ function Policy() {
                 toast.error("Failed to update policy");
             });
         }
-        
+
         setEditMode(false);
     }
 
@@ -130,59 +139,77 @@ function Policy() {
     return (
         <div className="main-container">
             <form onSubmit={(e) => e.preventDefault()}>
-            <div className="container">
-                <div className="title">
-                    <div className="horizontal-container justify-flex-start">
-                        <IconButton iconb="arrow_back" w="40" bg="white" c="black" onClick={handleBack} />
-                        Policy Viewer
-                    </div>
-                </div>
-                <hr className="h-divider" />
-
                 <div className="container">
                     <div className="title">
-                        <div className="horizontal-container fx-space-between">
-                            {editMode ?
-                                <>
-                                    <span>
-                                        <RightIconRectInput inputLabel="Policy Name" icon="person" required={true} value={policy.policyName} onChange={setPolicyName} />
-                                    </span>
-                                    <span>
-                                        <RightIconRectInput inputLabel="Department" icon="person" required={true} value={policy.department} onChange={setDepartment} />
-                                    </span>
-                                    <span>
-                                        <RightIconRectInput inputLabel="Level" icon="person" required={true} value={policy.level} onChange={setLevel} />
-                                    </span>
-                                </>
-                                : <h2>{policy.policyName}</h2>
-                            }
-
-                            {!editMode && <IconButton iconb="edit" w="40" bg="blue" c="white" onClick={handleEditButtonClick} />}
-                            {editMode &&
-                                <div className="button-container">
-                                    <IconButton type="submit" iconb="save" w="40" bg="green" c="white" onClick={handleSaveButtonClick} />
-                                    <IconButton iconb="cancel" w="40" bg="red" c="white" onClick={handleDeleteButtonClick} />
-                                </div>
-                            }
-                        </div>
                         <div className="horizontal-container justify-flex-start">
-                            {editMode ?
-                                <div className="full-width">
-                                    <RightIconRectInput inputLabel="Policy Description" icon="person" required={true} value={policy.policyDescription} onChange={setPolicyDescription} />
-                                </div> :
-                                <h3>Description : {policy.policyDescription}</h3>
-                            }
+                            <IconButton iconb="arrow_back" w="40" bg="white" c="black" onClick={handleBack} />
+                            Policy Viewer
                         </div>
                     </div>
-                    <hr className="h-divider low-profile" />
-                    {
-                        !editMode && <div className="policy-content" dangerouslySetInnerHTML={{ __html: policy.policyContent }} />
-                    }
-                    {
-                        editMode && <TextEditor startingText={policy.policyContent} handleChange={handleChange} />
-                    }
+                    <hr className="h-divider" />
+
+                    <div className="container">
+                        <div className="title">
+                            <div className="horizontal-container fx-space-between">
+                                {editMode ?
+                                    <>
+                                        <span>
+                                            <RightIconRectInput inputLabel="Policy Name" icon="person" required={true} value={policy.policyName} onChange={setPolicyName} />
+                                        </span>
+                                        <span>
+                                            <RightIconRectInput inputLabel="Department" icon="person" required={true} value={policy.department} onChange={setDepartment} />
+                                        </span>
+                                        <span>
+                                            <RightIconRectInput inputLabel="Level" icon="person" required={true} value={policy.level} onChange={setLevel} />
+                                        </span>
+                                        <span>
+                                            <RightIconRectInput type="date" inputLabel="Date" required={true} value={policy.policyCreatedDate} onChange={setPolicyCreatedDate} />
+                                        </span>
+                                    </>
+                                    :
+                                    <>
+                                        <span>
+                                            <h2>{policy.policyName}</h2>
+                                        </span>
+                                        <span>
+                                            <h3>Department : {policy.department}</h3>
+                                        </span>
+                                        <span>
+                                            <h3>Level : {policy.level}</h3>
+                                        </span>
+                                        <span>
+                                            <h3>Date : {policy.policyCreatedDate}</h3>
+                                        </span>
+                                    </>
+
+                                }
+
+                                {!editMode && <IconButton iconb="edit" w="40" bg="blue" c="white" onClick={handleEditButtonClick} />}
+                                {editMode &&
+                                    <div className="button-container">
+                                        <IconButton type="submit" iconb="save" w="40" bg="green" c="white" onClick={handleSaveButtonClick} />
+                                        <IconButton iconb="cancel" w="40" bg="red" c="white" onClick={handleDeleteButtonClick} />
+                                    </div>
+                                }
+                            </div>
+                            <div className="horizontal-container justify-flex-start align-flex-start">
+                                {editMode ?
+                                    <div className="full-width">
+                                        <RightIconRectInput inputLabel="Policy Description" icon="person" required={true} value={policy.policyDescription} onChange={setPolicyDescription} />
+                                    </div> :
+                                    <><h3>Description: </h3> <p>{policy.policyDescription}</p></>
+                                }
+                            </div>
+                        </div>
+                        <hr className="h-divider low-profile" />
+                        {
+                            !editMode && <div className="policy-content" dangerouslySetInnerHTML={{ __html: policy.policyContent }} />
+                        }
+                        {
+                            editMode && <TextEditor startingText={policy.policyContent} handleChange={handleChange} />
+                        }
+                    </div>
                 </div>
-            </div>
             </form>
         </div>
     );

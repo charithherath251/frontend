@@ -37,6 +37,11 @@
     transition: 0.5s;
 }
 
+
+.right-iconned-input input[type="date"]{
+    padding-right: 10px;
+}
+
 .right-iconned-input input::placeholder{
     font-family: 'Roboto Regular', arial, sans-serif;
     font-size: 14px;

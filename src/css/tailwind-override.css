@@ -30,3 +30,9 @@ h1 {
     padding: 0px 0px 0px 40px;
     margin: initial;
   }
+
+  p{
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+  }
