@@ -1,4 +1,4 @@
-.logo-background{
+.logo-background {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,14 +7,17 @@
     background-color: #00000020;
 }
 
-.logo-container{
-    -webkit-filter: drop-shadow(2px 2px 0 black)
-                  drop-shadow(-2px -2px 0 black);
-    filter: drop-shadow(2px 2px 0 black) 
-          drop-shadow(-2px -2px 0 black);
+.logo-container {
+    -webkit-filter: drop-shadow(2px 2px 0 black) drop-shadow(-2px -2px 0 black);
+    filter: drop-shadow(2px 2px 0 black) drop-shadow(-2px -2px 0 black);
+    width: 300px;
+    aspect-ratio: 1;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.auth-form{
+.auth-form {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -29,7 +32,7 @@
     padding: 20px 50px 30px 50px;
 }
 
-.form-title{
+.form-title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +43,27 @@
     margin-bottom: 50px;
 }
 
-.btn-margin{
+.btn-margin {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+@media (max-width: 950px) {
+    .logo-container{
+        display: none;
+    }
+    
+    .form{
+        background-color: #ffffffee;
+        border-radius: 4px 4px 0px 0px;
+    }
+
+    .form-bottom-bar{
+        background-color: #ffffffee;
+        width: 400px;
+        margin-top: 0px;
+        border-radius: 0px 0px 4px 4px;
+        border: 1px solid var(--accent-color-1);
+    }
+    
 }

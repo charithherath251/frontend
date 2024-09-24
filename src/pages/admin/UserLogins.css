@@ -1,0 +1,7 @@
+span.penalty {
+    color : var(--red-light-1);
+}
+
+span.reward {
+    color : var(--green-light-1);
+}

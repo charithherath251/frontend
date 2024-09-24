@@ -3,6 +3,8 @@ import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 
+import ProtectedRoute from './helpers/ProtectedRoute';
+
 import Dashboard from './pages/Dashboard';
 import AdminMain from './pages/admin/AdminMain';
 import UserLogins from './pages/admin/UserLogins';
@@ -27,16 +29,40 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/admin">
-              <Route index element={<Dashboard page={<AdminMain/>}/>} />
-              <Route path="logins" element={<Dashboard page={<UserLogins/>}/>} />
-              <Route path="policies" element={<Dashboard page={<Policies/>}/>} />
-              <Route path="policies/:id" element={<Dashboard page={<Policy/>}/>} />
-              <Route path="quizes" element={<Dashboard page={<Quizes/>}/>} />
+              <Route index element={
+                <ProtectedRoute>
+                  <Dashboard page={
+                    <AdminMain />
+                  } />
+                </ProtectedRoute>
+              } />
+
+              <Route path="logins" element={
+                <ProtectedRoute>
+                  <Dashboard page={<UserLogins />} />
+                </ProtectedRoute>
+              } />
+              <Route path="policies" element={
+                <ProtectedRoute>
+                  <Dashboard page={<Policies />} />
+                </ProtectedRoute>
+              } />
+              <Route path="policies/:id" element={
+                <ProtectedRoute>
+                  <Dashboard page={<Policy />} />
+                </ProtectedRoute>
+              } />
+              <Route path="quizes" element={
+                <ProtectedRoute>
+                  <Dashboard page={<Quizes />} />
+                </ProtectedRoute>
+              } />
             </Route>
+            
             <Route path="/auth">
-              <Route index element={<AuthPage formType={<LoginForm/>}/>} />
-              <Route path="login" element={<AuthPage formType={<LoginForm/>}/>} />
-              <Route path="register" element={<AuthPage formType={<RegisterForm/>}/>} />
+              <Route index element={<AuthPage formType={<LoginForm />} />} />
+              <Route path="login" element={<AuthPage formType={<LoginForm />} />} />
+              <Route path="register" element={<AuthPage formType={<RegisterForm />} />} />
             </Route>
           </Routes>
         </BrowserRouter>

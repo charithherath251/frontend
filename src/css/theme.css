@@ -53,9 +53,9 @@
     font-family: "Material Icons";
     font-style: normal;
     font-weight: 400;
-    src: url(../fonts/MaterialIcons-Regular.ttf);
+    src: url(../fonts/MaterialIcons-Regular-Custom.ttf);
     /* For IE6-8 */
-    src: local("Material Icons"), local("MaterialIcons-Regular"), url(../fonts/MaterialIcons-Regular.ttf) format("truetype");
+    src: local("Material Icons"), local("MaterialIcons-Regular"), url(../fonts/MaterialIcons-Regular-Custom.ttf) format("truetype");
   }
   
   @font-face {

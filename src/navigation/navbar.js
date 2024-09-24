@@ -20,7 +20,7 @@ function userProfileNav(userContext) {
       },
       {
         path: [`/admin/logins`],
-        title: "User Logins",
+        title: "Employees",
         icon: "passkey",
       },
       {

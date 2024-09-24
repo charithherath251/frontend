@@ -20,13 +20,6 @@
     transition: 0.3s;
 }
 
-.logo-container{
-    width: 300px;
-    aspect-ratio: 1;
-    background-position: center;
-    background-size: cover;
-}
-
 @media (max-width: 950px) {
     .left-container{
         background-repeat: no-repeat;
@@ -35,27 +28,9 @@
         transition: 0.3s
     }
 
-    .logo-container{
-        display: none;
-    }
-
     .right-container {
         position: absolute;
         background-color: transparent;
         transition: 0.5s;
-    }
-
-    .form{
-        background-color: #ffffffee;
-        border-radius: 4px 4px 0px 0px;
-    }
-
-    .form-bottom-bar{
-        background-color: #ffffffee;
-        width: 400px;
-        margin-top: 0px;
-        border-radius: 0px 0px 4px 4px;
-        border: 1px solid var(--accent-color-1);
-    }
-    
+    }    
 }

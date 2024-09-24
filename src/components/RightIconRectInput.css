@@ -10,6 +10,7 @@
     overflow: hidden;
     background-color: #fff;
     color: var(--accent-color-1);
+    margin-bottom: 10px;
 }
 
 .right-iconned-input__label{
@@ -19,6 +20,7 @@
     margin-top: 8px;
     letter-spacing: 0.25px;
     font-weight: 500;
+    font-size: 14px;
 }
 
 .right-iconned-input input {
