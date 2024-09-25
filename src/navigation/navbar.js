@@ -29,8 +29,8 @@ function userProfileNav(userContext) {
         icon: "local_police",
       },
       {
-        path: [`/admin/quizes`],
-        title: "Quizes",
+        path: [`/admin/mcqs`],
+        title: "MCQs",
         icon: "quiz",
       },
     );

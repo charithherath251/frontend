@@ -1,0 +1,66 @@
+.quill {
+    min-height: 200px;
+    margin-top: 0px;
+}
+
+.ql-container.ql-snow{
+    border: 0px;
+    height: 200px;
+}
+
+.mcq__input {
+    margin-bottom: 0px;
+}
+.mcq__label {
+    width: 75px;
+    margin: 0px;
+}
+
+.overlay-container > .container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.policy-select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300px;
+}
+
+.policy-select .mcq__label {
+    width: 100px;
+}
+
+.policy-select .mcq__input {
+    margin-bottom: 0px;
+}
+
+.options {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style: upper-alpha;
+}
+
+.option{
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.option.correct {
+    background-color: var(--green-light-2);
+    color: var(--text-color-6);
+}
+
+.option.correct::marker{
+    color: var(--green-light-2);
+}
+
+.mcq-container {
+   box-shadow: var(--shadow-4-4) !important;
+   overflow: hidden;
+}

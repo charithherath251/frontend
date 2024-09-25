@@ -4,7 +4,6 @@
     width: 100%;
     border-radius: 4px;
     min-height: 400px;
-    overflow: hidden;
     margin-top: 10px;
 }
 
@@ -20,4 +19,22 @@
 .ql-container.ql-snow{
     border: 0px;
     height: 400px;
+}
+
+.ql-tooltip.ql-editing{
+    z-index: 1000;
+}
+
+.suggestion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid var(--accent-color-2);
+    cursor: pointer;
+}
+
+.suggestion:hover {
+    color: var(--text-color-6);
+    background-color: var(--accent-color-2);
 }

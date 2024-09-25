@@ -44,6 +44,8 @@ function Policy() {
     const [policyLink, setPolicyLink] = useState(policy.policyLink);
     const [policyCreatedDate, setPolicyCreatedDate] = useState(policy.policyCreatedDate);
 
+    const [suggestionList, setSuggestionList] = useState([]);
+
     const [backupText, setBackupText] = useState(policy.policyContent);
 
     useEffect(() => {
@@ -55,7 +57,25 @@ function Policy() {
         if (!isCreateMode) {
             fetchData();
         }
-    }, []);
+
+        axios.get(`/policy`).then((res) => {
+            let suggestions = [];
+            res.data.forEach((policy) => {
+                suggestions.push({ label: policy.policyName, value: policy._id });
+            });
+
+            setSuggestionList(suggestions);
+            console.log(suggestions);
+        }).catch((err) => {
+            toast.error("Failed to fetch policies");
+        });
+    }, [isCreateMode, isEditMode, id]);
+
+    useEffect(() => {
+        if (suggestionList.length > 0) {
+            console.log("Suggestions list updated, re-rendering TextEditor.");
+        }
+    }, [suggestionList]);
 
     useEffect(() => {
         setPolicyName(policy.policyName);
@@ -157,10 +177,20 @@ function Policy() {
                                             <RightIconRectInput inputLabel="Policy Name" icon="person" required={true} value={policy.policyName} onChange={setPolicyName} />
                                         </span>
                                         <span>
-                                            <RightIconRectInput inputLabel="Department" icon="person" required={true} value={policy.department} onChange={setDepartment} />
+                                            <RightIconRectInput type="select" options={[
+                                                { value: "All", label: "All" },
+                                                { value: "hr", label: "Human Resources" },
+                                                { value: "technical", label: "Technical" },
+                                                { value: "it", label: "IT" }
+                                            ]} inputLabel="Department" icon="person" required={true} value={policy.department} onChange={setDepartment} />
                                         </span>
                                         <span>
-                                            <RightIconRectInput inputLabel="Level" icon="person" required={true} value={policy.level} onChange={setLevel} />
+                                            <RightIconRectInput type="select" options={[
+                                                { value: "Novice", label: "Novice" },
+                                                { value: "Intermediate", label: "Intermediate" },
+                                                { value: "Expert", label: "Expert" }
+                                            ]}
+                                                inputLabel="Level" icon="person" required={true} value={policy.level} onChange={setLevel} />
                                         </span>
                                         <span>
                                             <RightIconRectInput type="date" inputLabel="Date" required={true} value={policy.policyCreatedDate} onChange={setPolicyCreatedDate} />
@@ -206,7 +236,7 @@ function Policy() {
                             !editMode && <div className="policy-content" dangerouslySetInnerHTML={{ __html: policy.policyContent }} />
                         }
                         {
-                            editMode && <TextEditor startingText={policy.policyContent} handleChange={handleChange} />
+                            editMode && <TextEditor startingText={policy.policyContent} handleChange={handleChange} suggestionList={suggestionList} />
                         }
                     </div>
                 </div>

@@ -126,6 +126,29 @@ a{
   margin-bottom: 20px; 
 }
 
+.container:has(>.header){
+  padding: 0px;
+}
+
+.container > .header{
+  width: 100%;
+  height: 50px;
+  background-color: var(--accent-color-2);
+  padding: 5px;
+  border-radius: inherit;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  color: var(--text-color-6);
+  font-size: 1rem;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container .content{
+  width: 100%;
+  padding: 20px;
+}
+
 .horizontal-container{
   display: flex;
   flex-direction: row;
@@ -145,9 +168,20 @@ a{
 
 .horizontal-container.align-flex-start{
   align-items: flex-start;
+  gap: 20px;
 }
 
 .horizontal-container .full-width{
+  width: 100%;
+}
+
+.verticle-container{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
   width: 100%;
 }
 

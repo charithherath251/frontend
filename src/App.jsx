@@ -10,7 +10,7 @@ import AdminMain from './pages/admin/AdminMain';
 import UserLogins from './pages/admin/UserLogins';
 import Policies from './pages/admin/Policies';
 import Policy from './pages/Policy';
-import Quizes from './pages/admin/Quizes';
+import MCQs from './pages/admin/MCQs';
 
 import AuthPage from './pages/AuthPage';
 import RegisterForm from './components/RegisterForm';
@@ -52,13 +52,13 @@ function App() {
                   <Dashboard page={<Policy />} />
                 </ProtectedRoute>
               } />
-              <Route path="quizes" element={
+              <Route path="mcqs" element={
                 <ProtectedRoute>
-                  <Dashboard page={<Quizes />} />
+                  <Dashboard page={<MCQs />} />
                 </ProtectedRoute>
               } />
             </Route>
-            
+
             <Route path="/auth">
               <Route index element={<AuthPage formType={<LoginForm />} />} />
               <Route path="login" element={<AuthPage formType={<LoginForm />} />} />
