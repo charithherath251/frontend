@@ -12,6 +12,8 @@ import Policies from './pages/admin/Policies';
 import Policy from './pages/Policy';
 import MCQs from './pages/admin/MCQs';
 
+import Quiz from './pages/Quiz';
+
 import AuthPage from './pages/AuthPage';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
@@ -21,7 +23,7 @@ import { UserContext } from './context/UserContext';
 
 function App() {
 
-  const [userContext, setUserContext] = useState(JSON.parse(sessionStorage.getItem('user')) || { _id: "1", role: "admin" });
+  const [userContext, setUserContext] = useState(JSON.parse(sessionStorage.getItem('user')) || { _id: "66f578529c78da1b66fc4563", role: "user" });
 
   return (
     <>
@@ -57,6 +59,10 @@ function App() {
                   <Dashboard page={<MCQs />} />
                 </ProtectedRoute>
               } />
+            </Route>
+
+            <Route path="/quiz">
+              <Route index element={<Dashboard page={<Quiz/>} />} />
             </Route>
 
             <Route path="/auth">

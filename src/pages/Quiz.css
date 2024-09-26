@@ -1,0 +1,19 @@
+.mcq-container > .header > .horizontal-container {
+    height: 40px;
+}
+
+.option.selectable{
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    line-height: 30px;
+    font-size: min(20px, 1rem);
+}
+
+.quiz-form {
+    width: 100%;
+    padding: 0px 20px;
+}

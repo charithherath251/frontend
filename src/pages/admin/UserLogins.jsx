@@ -21,8 +21,17 @@ function UserLogins() {
   const [newEmployeeLastName, setNewEmployeeLastName] = useState("");
   const [newEmployeeEmail, setNewEmployeeEmail] = useState("");
   const [newEmployeeDepartment, setNewEmployeeDepartment] = useState("");
+  const [newEmployeeLevel, setNewEmployeeLevel] = useState("Novice");
 
   const [departmentList, setDepartmentList] = useState([]);
+
+  const [employeeList, setEmployeeList] = useState([]);
+
+  const getEmployees = () => {
+    axios.get("/user").then((res) => {
+      setEmployeeList(res.data);
+    });
+  }
 
 
   useEffect(() => {
@@ -33,6 +42,8 @@ function UserLogins() {
       setNewEmployeeDepartment(departments[0].value);
       setDepartmentList(departments);
     });
+
+    getEmployees();
   }, []);
 
   const handleFormSubmit = (e) => {
@@ -43,8 +54,10 @@ function UserLogins() {
       lastName: newEmployeeLastName,
       email: newEmployeeEmail,
       department: newEmployeeDepartment,
+      level: newEmployeeLevel
     }).then((res) => {
       toast.success("Employee added successfully");
+      setNewEmployeeFormOverlay(false);
     }).catch((err) => {
       toast.error("Failed to add employee");
     });
@@ -59,6 +72,21 @@ function UserLogins() {
     setChangeEmployeeScore__name(name);
     setChangeEmployeeScore__score(score);
     setChangeEmployeeScore__type(type);
+  }
+
+  const handleDeleteClick = (id) => {
+    //ask user for confirmation
+    const confirmed = window.confirm("Are you sure you want to delete this employee?");
+    if (!confirmed) {
+      return;
+    }
+
+    axios.delete(`/user/${id}`).then((res) => {
+      toast.success("Employee deleted successfully");
+      getEmployees();
+    }).catch((err) => {
+      toast.error("Failed to delete employee");
+    });
   }
 
   const capitalize = (s) => {
@@ -90,6 +118,13 @@ function UserLogins() {
               </span>
               <span>
                 <RightIconRectInput type="select" options={departmentList} onChange={setNewEmployeeDepartment} inputLabel="Department" icon="person" required={true} />
+              </span>
+              <span>
+                <RightIconRectInput type="select" options={[
+                  {"value": "Novice", "label" : "Novice"},
+                  {"value": "Intermediate", "label" : "Intermediate"},
+                  {"value": "Expert", "label" : "Expert"}                   
+                ]} onChange={setNewEmployeeLevel} inputLabel="Level" icon="level" required={true} />
               </span>
 
               <div className="horizontal-container fx-end">
@@ -130,9 +165,9 @@ function UserLogins() {
           <thead>
             <tr>
               <th>Employee ID</th>
-              <th>Employee Name</th>
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Department</th>
-              <th>Role</th>
               <th>Last Login</th>
               <th>Level</th>
               <th>Marks</th>
@@ -140,20 +175,22 @@ function UserLogins() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Employee 1</td>
-              <td>Department 1</td>
-              <td>Role 1</td>
-              <td>Last Login 1</td>
-              <td>Level 1</td>
-              <td>Marks 1</td>
-              <td className="td-horizontal">
-                <IconButton iconb="star_rate" w="40" bg="green" c="white" title="Reward" onClick={(e) => handleChangeScoreClick(1, "employee1", 100, "reward")} />
-                <IconButton iconb="yellow_card" w="40" bg="yellow" c="white" title="Penalty" onClick={(e) => handleChangeScoreClick(1, "employee1", 100, "penalty")} />
-                <IconButton iconb="delete" w="40" bg="red" c="white" />
-              </td>
-            </tr>
+            {employeeList.map((employee, index) => (
+              <tr key={index}>
+                <td>{employee._id}</td>
+                <td>{employee.firstName}</td>
+                <td>{employee.lastName}</td>
+                <td>{employee.department}</td>
+                <td>{employee.lastLogin}</td>
+                <td>{employee.level}</td>
+                <td>{employee.marks}</td>
+                <td className="td-horizontal">
+                  <IconButton iconb="star_rate" w="40" bg="green" c="white" title="Reward" onClick={(e) => handleChangeScoreClick(employee._id, "reward")} />
+                  <IconButton iconb="yellow_card" w="40" bg="yellow" c="white" title="Penalty" onClick={(e) => handleChangeScoreClick(employee._id, employee.firstName, employee.marks, "penalty")} />
+                  <IconButton iconb="delete" w="40" bg="red" c="white" title="Delete" onClick={(e) => handleDeleteClick(employee._id)}/>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
