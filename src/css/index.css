@@ -155,6 +155,7 @@ a{
   align-items: center;
   justify-content: space-around;
   width: 100%;
+  gap: 20px;
 }
 
 .horizontal-container.fx-space-between{
@@ -385,4 +386,10 @@ a{
   flex-direction: row;
   gap: 10px;
   justify-content: flex-end;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

@@ -5,3 +5,10 @@ span.penalty {
 span.reward {
     color : var(--green-light-1);
 }
+
+.overlay-container > .container {
+    width: 100%;
+    max-width: 500px !important;
+    padding: 20px;
+    margin-bottom: 20px;
+}

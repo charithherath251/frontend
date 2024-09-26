@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import IconButton from "../../components/IconButton";
 import OverlayContainer from "../../components/OverlayContainer";
 import RightIconRectInput from "../../components/RightIconRectInput";
 
+import axios from "../../utils/axios";
+
 import "./UserLogins.css";
+import { toast } from "react-toastify";
 
 function UserLogins() {
   const [newEmployeeFormOverlay, setNewEmployeeFormOverlay] = useState(false);
@@ -14,14 +17,44 @@ function UserLogins() {
   const [changeEmployeeScore__score, setChangeEmployeeScore__score] = useState(0);
   const [changeEmployeeScore__type, setChangeEmployeeScore__type] = useState("penalty");
 
+  const [newEmployeeFirstName, setNewEmployeeFirstName] = useState("");
+  const [newEmployeeLastName, setNewEmployeeLastName] = useState("");
+  const [newEmployeeEmail, setNewEmployeeEmail] = useState("");
+  const [newEmployeeDepartment, setNewEmployeeDepartment] = useState("");
+
+  const [departmentList, setDepartmentList] = useState([]);
+
+
+  useEffect(() => {
+    axios.get("/department").then((res) => {
+      const departments = res.data.map((department) => {
+        return { value: department, label: department };
+      });
+      setNewEmployeeDepartment(departments[0].value);
+      setDepartmentList(departments);
+    });
+  }, []);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    axios.post("/user", {
+      firstName: newEmployeeFirstName,
+      lastName: newEmployeeLastName,
+      email: newEmployeeEmail,
+      department: newEmployeeDepartment,
+    }).then((res) => {
+      toast.success("Employee added successfully");
+    }).catch((err) => {
+      toast.error("Failed to add employee");
+    });
+  }
 
   const handleAddClick = () => {
-    console.log("Add clicked");
     setNewEmployeeFormOverlay(true);
   }
 
   const handleChangeScoreClick = (id, name, score, type) => {
-    console.log("Change score clicked");
     setChangeEmployeeScoreOverlay(true);
     setChangeEmployeeScore__name(name);
     setChangeEmployeeScore__score(score);
@@ -37,21 +70,32 @@ function UserLogins() {
       {newEmployeeFormOverlay &&
         <OverlayContainer display={setNewEmployeeFormOverlay}>
           <div className="container">
-
-            <RightIconRectInput inputLabel="Employee ID" icon="person" required={true} />
-            <RightIconRectInput inputLabel="Email" icon="person" required={true} />
-            <RightIconRectInput inputLabel="Employee Name" icon="person" required={true} />
-            <RightIconRectInput inputLabel="Department" icon="person" required={true} />
-            <RightIconRectInput inputLabel="Role" icon="person" required={true} />
-            <RightIconRectInput inputLabel="Employee ID" icon="person" required={true} />
-            <RightIconRectInput inputLabel="Email" icon="person" required={true} />
-            <RightIconRectInput inputLabel="Employee Name" icon="person" required={true} />
-            <RightIconRectInput inputLabel="Department" icon="person" required={true} />
-            <RightIconRectInput inputLabel="Role" icon="person" required={true} />
-
-            <div className="horizontal-container fx-end">
-              <IconButton iconb="done" w="40" bg="green" c="white" />
+            <div className="title">
+              <div className="horizontal-container fx-space-between">
+                <span>New Employee</span>
+              </div>
             </div>
+
+            <form className="form" onSubmit={(e) => handleFormSubmit(e)}>
+              <div className="horizontal-container">
+                <span>
+                  <RightIconRectInput inputLabel="First Name" icon="person" onChange={setNewEmployeeFirstName} required={true} />
+                </span>
+                <span>
+                  <RightIconRectInput inputLabel="Last Name" icon="person" onChange={setNewEmployeeLastName} required={true} />
+                </span>
+              </div>
+              <span>
+                <RightIconRectInput inputLabel="Email" icon="email" onChange={setNewEmployeeEmail} required={true} />
+              </span>
+              <span>
+                <RightIconRectInput type="select" options={departmentList} onChange={setNewEmployeeDepartment} inputLabel="Department" icon="person" required={true} />
+              </span>
+
+              <div className="horizontal-container fx-end">
+                <IconButton iconb="done" content="Submit" bg="green" c="white" />
+              </div>
+            </form>
           </div>
         </OverlayContainer>
       }

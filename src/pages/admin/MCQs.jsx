@@ -103,7 +103,7 @@ function MCQs() {
             return;
         }
 
-        if(editMode){
+        if (editMode) {
             axios.put(`/mcq/${mcqId}`, {
                 "mcq": newQuestion,
                 "answers": options,
@@ -116,7 +116,7 @@ function MCQs() {
             }).catch(err => {
                 toast.error("Failed to update MCQ");
             });
-        }else{
+        } else {
             axios.post('/mcq',
                 {
                     "mcq": newQuestion,
@@ -155,7 +155,7 @@ function MCQs() {
                         <form onSubmit={(e) => handleSubmit(e)}>
                             <div className="horizontal-container align-flex-start">
                                 <h3>Question:</h3>
-                                <TextEditor handleChange={setNewQuestion} startingText={newQuestion}/>
+                                <TextEditor handleChange={setNewQuestion} startingText={newQuestion} />
                             </div>
 
                             <div className="verticle-container">
@@ -181,9 +181,10 @@ function MCQs() {
                             </div>
                             <br />
                             <div className="horizontal-container fx-end">
-                                { editMode ? 
+                                {editMode ?
                                     <IconButton type="Update" iconb="done" content="Update MCQ" bg="blue" c="white" />
-                                :<IconButton type="Submit" iconb="done" content="Save MCQ" bg="green" c="white" /> }
+                                    :
+                                    <IconButton type="Submit" iconb="done" content="Save MCQ" bg="green" c="white" />}
                             </div>
                         </form>
                     </div>

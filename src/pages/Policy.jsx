@@ -34,7 +34,7 @@ function Policy() {
         return `${yyyy}-${mm}-${dd}`;
     }
 
-    const [policy, setPolicy] = useState({ "policyName": "", "department": "", "level": "novice", "policyDescription": "", "policyContent": "", "policyLink": "null", "policyCreatedDate": getDate() });
+    const [policy, setPolicy] = useState({ "policyName": "", "department": "All", "level": "Novice", "policyDescription": "", "policyContent": "", "policyLink": "null", "policyCreatedDate": getDate() });
 
     const [policyName, setPolicyName] = useState(policy.policyName);
     const [department, setDepartment] = useState(policy.department);
@@ -47,6 +47,26 @@ function Policy() {
     const [suggestionList, setSuggestionList] = useState([]);
 
     const [backupText, setBackupText] = useState(policy.policyContent);
+
+    const [departmentList, setDepartmentList] = useState([]);
+
+    useEffect(() => {
+        axios.get('/department').then((res) => {
+            let departments = res.data;
+            departments.unshift("All");
+
+            console.log(res.data);
+
+            departments = departments.map((department) => {
+                return { label: department, value: department };
+            });
+
+            console.log(departments);
+            setDepartmentList(departments);
+        }).catch((err) => {
+            toast.error("Failed to fetch departments");
+        });
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -177,12 +197,7 @@ function Policy() {
                                             <RightIconRectInput inputLabel="Policy Name" icon="person" required={true} value={policy.policyName} onChange={setPolicyName} />
                                         </span>
                                         <span>
-                                            <RightIconRectInput type="select" options={[
-                                                { value: "All", label: "All" },
-                                                { value: "hr", label: "Human Resources" },
-                                                { value: "technical", label: "Technical" },
-                                                { value: "it", label: "IT" }
-                                            ]} inputLabel="Department" icon="person" required={true} value={policy.department} onChange={setDepartment} />
+                                            <RightIconRectInput type="select" options={departmentList} inputLabel="Department" icon="person" required={true} value={policy.department} onChange={setDepartment} />
                                         </span>
                                         <span>
                                             <RightIconRectInput type="select" options={[
