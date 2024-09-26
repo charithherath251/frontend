@@ -1,0 +1,25 @@
+.verify-form{
+
+}
+
+.verify-form .form-title{
+    margin-bottom: 5px;
+}
+
+.verify-form .verify-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 108px !important;
+    width: 108px !important;
+    font-size: 108px;
+    font-family: 'Material Icons Outlined';
+    color: transparent;
+    background-image: linear-gradient(145deg, #00ffff 30%, #ffff00 50%, #ff00ff 80%);
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.verify-form .verif-text-area{
+    margin-bottom: 60px;
+}

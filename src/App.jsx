@@ -19,7 +19,7 @@ import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 
 import { UserContext } from './context/UserContext';
-
+import EmailVerifForm from './components/EmailVerifForm';
 
 function App() {
 
@@ -68,7 +68,7 @@ function App() {
             <Route path="/auth">
               <Route index element={<AuthPage formType={<LoginForm />} />} />
               <Route path="login" element={<AuthPage formType={<LoginForm />} />} />
-              <Route path="register" element={<AuthPage formType={<RegisterForm />} />} />
+              <Route path="otp" element={<AuthPage formType={<EmailVerifForm />} />} />
             </Route>
           </Routes>
         </BrowserRouter>

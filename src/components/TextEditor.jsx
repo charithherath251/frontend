@@ -78,7 +78,10 @@ const TextEditor = ({ startingText, handleChange, suggestionList }) => {
     // Handle text changes and sanitize input
     const onTextChange = (value) => {
         setTextLocal(value);
-        const sanitizedHTML = DOMPurify.sanitize(value);
+        const sanitizedHTML = DOMPurify.sanitize(value, {
+            ADD_TAGS: ['iframe'],  // Allow iframe tags for video embedding
+            ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'], // Allow necessary attributes for iframe
+        });
         handleChange(sanitizedHTML); // Update the parent with sanitized HTML
     };
 
