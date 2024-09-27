@@ -62,8 +62,8 @@ function Policies() {
                             <th>Name</th>
                             <th>Department</th>
                             {/* <th>Level</th> */}
-                            <th>Description</th>
-                            <th>Date</th>
+                            <th>Purpose</th>
+                            {/* <th>Date</th> */}
                             <th></th>
                         </tr>
                     </thead>
@@ -76,7 +76,7 @@ function Policies() {
                                         <td>{item.department}</td>
                                         {/* <td>{item.level}</td> */}
                                         <td>{item.policyDescription}</td>
-                                        <td>{item.policyCreatedDate}</td>
+                                        {/* <td>{item.policyCreatedDate}</td> */}
                                         <td className="td-horizontal">
                                             <IconButton iconb="list_alt" w="40" bg="blue" c="white" onClick={() => handleViewClick(item._id)}/>
                                             <IconButton iconb="delete" w="40" bg="red" c="white" onClick={()=> handleDeleteClick(item._id)}/>

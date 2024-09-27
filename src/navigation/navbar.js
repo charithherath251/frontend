@@ -40,11 +40,11 @@ function userProfileNav(userContext) {
 
   if (userContext.role === "admin") {
     nav.push(
-      {
-        path: [`/admin`, `/admin/dashboard`],
-        title: "Admin Dashboard",
-        icon: "admin_panel_settings",
-      },
+      // {
+      //   path: [`/admin`, `/admin/dashboard`],
+      //   title: "Admin Dashboard",
+      //   icon: "admin_panel_settings",
+      // },
       {
         path: [`/admin/logins`],
         title: "Employees",
