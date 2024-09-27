@@ -31,7 +31,7 @@ function MCQs() {
     const getPolicies = () => {
         axios.get('/policy').then(res => {
             setPolicies(res.data);
-            setRelatedPolicy(res.data[0]._id);
+            setRelatedPolicy(res.data[0]._id || "");
         }).catch(err => {
             toast.error("Failed to fetch policies");
         });

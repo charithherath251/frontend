@@ -23,7 +23,7 @@ import EmailVerifForm from './components/EmailVerifForm';
 
 function App() {
 
-  const [userContext, setUserContext] = useState(JSON.parse(sessionStorage.getItem('user')) || { _id: "66f578529c78da1b66fc4563", role: "user" });
+  const [userContext, setUserContext] = useState(JSON.parse(sessionStorage.getItem('user')) || { _id: "66f578529c78da1b66fc4563", role: "admin" });
 
   return (
     <>
