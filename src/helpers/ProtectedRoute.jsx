@@ -9,7 +9,7 @@ function ProtectedRoute({ children }) {
 
     if (!isAuthenticated) {
         toast.error("You need to login first");
-        //return <Navigate to="/auth/login" />;
+        return <Navigate to="/auth/login" />;
     }else{
         return children;
     }

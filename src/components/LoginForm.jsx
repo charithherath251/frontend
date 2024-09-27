@@ -60,17 +60,29 @@ function LoginForm() {
 
         axios.post("/auth/login", { email: email, password: password }).then((res) => {
             console.log(res);
-            if (res.data?.status == "success") {
-                localStorage.setItem('jwtToken', res.data.accessToken);
-                setUserContext(res.data.user);
-                sessionStorage.setItem('user', JSON.stringify(res.data.user));
+            // if (res.data?.status == "success") {
+            //     localStorage.setItem('jwtToken', res.data.accessToken);
+            //     setUserContext(res.data.user);
+            //     sessionStorage.setItem('user', JSON.stringify(res.data.user));
 
-                toast.success("Logged In Successfully");
+            //     toast.success("Logged In Successfully");
 
-                navigate(`/user/profile/${res.data.user._id}`);
-            } else {
-                toast.error(res.data?.message);
+            //     navigate(`/user/profile/${res.data.user._id}`);
+            // } else {
+            //     toast.error(res.data?.message);
+            // }
+            if (res.data.message) {
+                toast.info(res.data.message);
+                if(res.data.message === 'First login, password sent via email'){
+                    navigate('/auth/login');
+                    return;
+                }
+                navigate("/auth/otp" , {
+                    state: {
+                        email: email 
+                    }});
             }
+
 
         }).catch((err) => {
             console.log(err);
@@ -91,7 +103,7 @@ function LoginForm() {
 
                 <IconButton content={"Login"} extraClass={"btn-borderw-1 btn-borderc-747775 btn-margin login-btn"} />
                 <div className="h-divider"></div>
-                <IconButton icon="google" onClick={googleAuth} iconb={<GoogleIcon />} w="max" extraClass="google-auth-btn btn-margin" content={"Continue with Google"} />
+                {/* <IconButton icon="google" onClick={googleAuth} iconb={<GoogleIcon />} w="max" extraClass="google-auth-btn btn-margin" content={"Continue with Google"} /> */}
             </form>
             <div className="form-bottom-bar">
                 <div>T&C</div>

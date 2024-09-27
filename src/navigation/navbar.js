@@ -5,13 +5,37 @@ function userProfileNav(userContext) {
   let nav = [];
 
   if (userContext.role === "user") {
+    // nav.push(
+    //   {
+    //     path: [`/`],
+    //     title: "Quiz",
+    //     icon: "",
+    //     // active: true,
+    //   });
+
     nav.push(
       {
-        path: [`/quiz`],
-        title: "Quiz",
-        icon: "quiz",
+        path: [`/profile`],
+        title: "Profile",
+        icon: "passkey",
         active: true,
       });
+
+      nav.push(
+        {
+          path: [`/quiz`],
+          title: "Quiz",
+          icon: "quiz",
+          active: true,
+        });
+
+      nav.push(
+        {
+          path: [`/policies`],
+          title: "Policies",
+          icon: "quiz",
+          active: true,
+        });
   }
 
   if (userContext.role === "admin") {

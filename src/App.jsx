@@ -20,6 +20,9 @@ import LoginForm from './components/LoginForm';
 
 import { UserContext } from './context/UserContext';
 import EmailVerifForm from './components/EmailVerifForm';
+import PoliciesUser from './pages/PoliciesUser';
+import UserProfile from './pages/UserProfile';
+import Logout from './pages/Logout';
 
 function App() {
 
@@ -64,7 +67,15 @@ function App() {
             <Route path="/quiz">
               <Route index element={<Dashboard page={<Quiz/>} />} />
             </Route>
-
+            <Route path="/policies">
+              <Route index element={<Dashboard page={<PoliciesUser/>} />} />
+            </Route>
+            <Route path="/logout">
+              <Route index element={<Dashboard page={<Logout/>} />} />
+            </Route>
+            <Route path="/profile">
+              <Route index element={<Dashboard page={<UserProfile/>} />} />
+            </Route>
             <Route path="/auth">
               <Route index element={<AuthPage formType={<LoginForm />} />} />
               <Route path="login" element={<AuthPage formType={<LoginForm />} />} />
